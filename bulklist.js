@@ -7,7 +7,7 @@
         list,
         bulk;
 
-    function attach_to(document, div_id) {
+    function attachTo(document, div_id) {
         app = document.getElementById(div_id);
         listContainer = document.createElement("div");
         list = document.createElement("ul");
@@ -40,7 +40,7 @@
     }
 
     var bulklist = {
-        attach_to: attach_to,
+        attachTo: attachTo,
         update: update
     };
 
