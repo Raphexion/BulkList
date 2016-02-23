@@ -1,0 +1,9 @@
+bower_components
+node_modules
+development
+coverage
+production
+*.iml
+.DS_Store
+.idea/
+.orig
