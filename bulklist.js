@@ -10,8 +10,10 @@
     function attachTo(document, div_id) {
         app = document.getElementById(div_id);
         listContainer = document.createElement("div");
+        listContainer.id = div_id.concat("_list");
         list = document.createElement("ul");
         bulk = document.createElement("textarea");
+        bulk.id = div_id.concat("_bulk");
         bulk.cols = "50";
         bulk.rows = "30";
         listContainer.appendChild(list);
