@@ -12,8 +12,8 @@
         listContainer = document.createElement("div");
         list = document.createElement("ul");
         bulk = document.createElement("textarea");
-        bulk.cols = "100";
-        bulk.rows = "80";
+        bulk.cols = "50";
+        bulk.rows = "30";
         listContainer.appendChild(list);
         app.appendChild(listContainer);
         app.appendChild(bulk);
