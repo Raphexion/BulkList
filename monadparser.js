@@ -8,7 +8,7 @@
    we will implement (foo, bar) as
    {'v': foo, 'r': bar}
 
-   v stands for parsed
+   v stands for value
    r stands for rest
 */
 
