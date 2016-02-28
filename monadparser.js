@@ -41,7 +41,7 @@
         };
     }
 
-    function then(p, fp) {
+    function then(p, f2p) {
         return function (inp) {
             var val = '',
                 out = '',
@@ -52,7 +52,7 @@
             }
             val = res[0].v;
             out = res[0].r;
-            return parse(fp(val, out));
+            return parse(f2p(val), out);
         };
     }
 
@@ -68,13 +68,37 @@
 
     function sat(pred) {
         return function (inp) {
-            var p = failure(),
-                res = parse(item(), inp);
+            var res = parse(item(), inp);
             if (res.length === 1 && pred(res[0].v)) {
-                p = item(res[0].v);
+                return res;
             }
-            return p;
+            return [];
         };
+    }
+
+    function char(c) {
+        return sat(function (v) {
+            return (c === v);
+        });
+    }
+
+    function string(str) {
+        var s = '',
+            xs = '';
+
+        if (str.length === 0) {
+            return ret('');
+        }
+
+        s = str[0];
+        xs = str.slice(1);
+
+        console.log('got: '.concat(s));
+
+        return then(char(s),
+                    then(string(xs),
+                         function (ignore) {
+                             ret(s.concat(xs))}));
     }
 
     root.parser = {
@@ -82,6 +106,8 @@
         'then': then,
         'orElse': orElse,
         'sat': sat,
+        'char': char,
+        'string': string,
         'ret': ret,
         'failure': failure,
         'item': item
