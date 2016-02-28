@@ -1,7 +1,8 @@
 (function (root) {
     'use strict';
 
-    var app,
+    var parser = root.parser,
+        app,
         listContainer,
         list,
         bulk;
@@ -29,6 +30,8 @@
     }
 
     function update() {
+        var test = parser.parse(parser.item(), "abc");
+
         var lines = bulk.value.trim().split('\n'),
             ii,
             li;
